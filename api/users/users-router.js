@@ -1,10 +1,18 @@
 const express = require('express');
 
+const Users = require('./users-model');
+const Posts = require('../posts/posts-model');
+
 const router = express.Router();
 
+const { validateUserId, validateUser } = require('../middleware/middleware');
+
 router.post('/', (req, res) => {
-  // do your magic!
-  // this needs a middleware to check that the request body is valid
+  const userInfo = req.body
+  Users.insert(userInfo)
+  .then((user) => {
+    res.status(201).json({ success})
+  })
 });
 
 router.get('/', (req, res) => {
@@ -39,3 +47,4 @@ router.get('/:id/posts', (req, res) => {
 });
 
 // do not forget to export the router
+module.exports = router;
