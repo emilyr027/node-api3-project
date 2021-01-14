@@ -12,9 +12,6 @@ function validateUserId(req, res, next) {
       res.status(404).json({ message: "user not found" })
     }
   })
-  // .catch((error) => {
-  //   res.status(500).json()
-  // } )
 }
 
 function validateUser(req, res, next) {
